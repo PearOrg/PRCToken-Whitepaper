@@ -1,0 +1,84 @@
+\chapter{区块链与共享经济}
+\section{区块链技术}
+区块链的诞生，标志着人类尝试开始构建真正可以信任的互联网。通过回顾区块链的兴起和发展我们不难发现，区块链真正引人关注之处在于，能够在网络中建立点对点之间可靠的信任机制，使得价值传递过程去除了中介的干扰，既公开信息又保护隐私，既共同决策又保护个体权益，这种信任机制提高了价值交互的效率并降低了成本。\par
+从经济学意义来看，区块链创造的这种新的价值交互范式基于“去中心化”，但这并非意味着各种“中心”的完全消失，未来区块链必将出现大量的“多极”体系，以某一真实服务场景为“极点”，以连接在此服务场景下的设备、用户为“节点”，共同构建区块链的完整体系。\par
+从技术角度来看，区块链是一种由多方共同维护，以块链结构存储数据，使用密码学保证传输和访问安全，能够实现数据一致存储、无法篡改、无法抵赖的技术体系。这种技术满足了人类的基本诉求，解决了很多场景下无法满足的信任与安全问题，天生适用于共享经济体系，将区块链技术应用在共享经济体系之中，必将是未来区块链发展的一个重要方向。
+\section{共享经济}
+共享经济，是一种共用人力与资源的社会运作方式。它包括不同个人与组织对商品和服务的创造、生产、分配、交易和消费的共享。共享经济又具有弱化拥有权，强化使用权的作用。在共享经济体系下，人们可将所拥有的资源有偿租借给他人，使未被充分利用的资源获得更有效的利用，从而使资源的整体利用效率变得更高。\par 
+随着互联网的不断发展，共享经济也逐步渗透到各个领域，第三方平台飞速发展，商业模式不断完善。未来共享经济想要有质的飞跃，必须依靠互联网的相关技术，解决用传统方法无法解决的共享难题，创新商业模式，扩展应用场景。\par 
+\section{未来发展趋势}
+区块链技术与共享经济相融合是未来发展的一个必要趋势。\par 
+一方面，区块链技术想要扩展其应用场景，必然依托于网络，扎根于新型的产业， 作为新型行业发展的基石。区块链技术必将凭借其安全、信任机制，完善其理论与系统架构，在推动新型产业的同时，自身逐步发展。数字货币只不过是区块链技术的初级阶段，一个清晰完善的区块链系统平台以及衍生的相关的服务与应用，才是区块链进一步发展的保证，而这一切都需要一个与之相伴相生，紧密相连，共同发展的落地产业的实践支持。共享经济之于区块链，便是承担了这样这样的角色。\par 
+另一方面，共享经济已经发展到了退化的阶段，很多共享经济模式，名为共享，实则租赁。而且依托于互联网发展而发展起来的共享经济现在还囿于实物资源的共享，还是至止步于一些初级的行业，对互联网的利用也仅局限于信息的及时交互。共享经济已经发展了如此之久，却远远落后于当今互联网的发展，这并不是其他外部资源推动发展不足的问题，而是共享经济本身特点所造就的，共享资源难以标准化，共享信息难以进行真实性记录，所有共享节点难以构建成一个网络，缺乏一个具有公信力的标准。而这些问题，恰恰是区块链所擅长的事情，区块链可以弥补共享经济发展遇到的难题，给共享经济的发展提供一个更加广阔的平台。\par 
+Pear正是敏锐的意识到了这一点，结合区块链技术与共享经济，帮助用户分享带宽、存储、计算等资源。
+
+\begin{tikzpicture}[
+  level 1/.style={sibling distance=40mm},
+  edge from parent/.style={->,draw},
+  >=latex]
+
+% root of the the initial tree, level 1
+\node[root] {Drawing diagrams}
+% The first level, as children of the initial tree
+  child {node[level 2] (c1) {Defining node and arrow styles}}
+  child {node[level 2] (c2) {Positioning the nodes}}
+  child {node[level 2] (c3) {Drawing arrows between nodes}};
+
+% The second level, relatively positioned nodes
+\begin{scope}[every node/.style={level 3}]
+\node [below of = c1, xshift=15pt] (c11) {Setting shape};
+\node [below of = c11] (c12) {Choosing color};
+\node [below of = c12] (c13) {Adding shading};
+
+\node [below of = c2, xshift=15pt] (c21) {Using a Matrix};
+\node [below of = c21] (c22) {Relatively};
+\node [below of = c22] (c23) {Absolutely};
+\node [below of = c23] (c24) {Using overlays};
+
+\node [below of = c3, xshift=15pt] (c31) {Default arrows};
+\node [below of = c31] (c32) {Arrow library};
+\node [below of = c32] (c33) {Resizing tips};
+\node [below of = c33] (c34) {Shortening};
+\node [below of = c34] (c35) {Bending};
+\end{scope}
+
+% lines from each level 1 node to every one of its "children"
+\foreach \value in {1,2,3}
+  \draw[->] (c1.270) |- (c1\value.west);
+
+\foreach \value in {1,...,4}
+  \draw[->] (c2.195) |- (c2\value.west);
+
+\foreach \value in {1,...,5}
+  \draw[->] (c3.355) |- (c3\value.east);
+\end{tikzpicture}
+
+%\begin{tabular}{ll}
+ %|\songti| & {\songti 宋体} \\
+ %|\heiti| & {\heiti 黑体} \\
+ %|\fangsong| & {\fangsong 仿宋} \\
+ %|\kaishu| & {\kaishu 楷书} \\
+ %|\lishu| & {\lishu 隶书} \\
+ %|\youyuan| & {\youyuan 幼圆}
+%\end{tabular}
+
+\begin{tikzpicture}[
+  node distance=7mm,
+  title/.style={font=\fontsize{6}{6}\color{black!50}\ttfamily},
+  typetag/.style={rectangle, draw=black!50, anchor=west}
+]
+  \node (decomp) [title] { Decomposition };
+
+  \node (di) [below=of decomp.west, typetag, xshift=2mm] { Independent };
+  \node (dr) [below=of di.west, typetag] { Reduction };
+  \node (dnc) [below=of dr.west, typetag] { DivideAndConquer };
+
+  \node [draw=black!50, fit={(decomp) (di) (dr) (dnc)}] {};
+
+  \node (dep) at (4cm, 0) [title] { Dependency };
+
+  \node (da) [below=of dep.west, typetag, xshift=2mm] { Atomic };
+  \node (dr) [below=of da.west, typetag] { Range };
+
+  \node [draw=black!50, fit={(dep) (dr) (da)}] {};
+\end{tikzpicture}
