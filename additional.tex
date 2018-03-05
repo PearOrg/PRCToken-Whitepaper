@@ -12,6 +12,9 @@
 \usepackage{booktabs,threeparttable}
 \usepackage[formats]{listings}
 
+\usepackage[font=small,justification=centering]{caption}
+%\usepackage[font=footnotesize]{subcaption}
+
 \def\UrlBigBreaks{\do\/\do\-\do:\do\_\do\#\do\?}
 
 \usepackage{makecell}
@@ -28,7 +31,7 @@
 
 \usepackage{tikz}
 \usetikzlibrary{arrows,shapes,positioning,shadows,trees,fit,calc}
-
+\tikzset{font=\footnotesize}
 \tikzset{
   basic/.style  = {draw, rectangle},
   root/.style   = {basic, rounded corners=2pt, thin, align=center,

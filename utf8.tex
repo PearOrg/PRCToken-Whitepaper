@@ -7,7 +7,7 @@
 %\documentclass[UTF8,zihao=-4,a4paper,fancyhdr,fntef]{ctexrep}
 \documentclass[UTF8,12pt,a4paper,fancyhdr,fntef]{report}
 \usepackage{fancyhdr}
-\usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm, head=0.5cm, headsep=0.5cm, foot=0.75cm]{geometry}
+\usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm, head=0.5cm, headsep=0.5cm, foot=0.5cm]{geometry}
 %\CTEXsetup[number={\arabic{chapter}}, beforeskip={0pt}]{chapter} %format={\zihao{-3}\centering
 %\CTEXoptions[contentsname={目\quad 录}]
 
@@ -38,15 +38,21 @@
 \newcommand*{\keywords}[1]{\noindent\textbf{Keywords: }#1}
 \newcommand*{\cnkeywords}[1]{\noindent\textbf{关键词: }#1}
 
-\input{additional.tex}
-
 \title{\includegraphics[scale=.25]{PearLogo.eps} \\The PRCToken White Paper}
 \author{JIANG, Yinghao\\
-		\href{mailto:j@pear.hk}{\nolinkurl{(j@pear.hk)}}
-		}
+	\href{mailto:j@pear.hk}{\nolinkurl{(j@pear.hk)}}
+}
+
+\input{additional.tex}
+
+\hypersetup{
+	pdftitle={The PRCToken White Paper},    % title
+	pdfauthor={JIANG, Yinghao},     % author
+	pdfsubject={White Paper of the Pear Coin Token (PRCToken)},   % subject of the document
+	pdfkeywords={Fog Computing, Crowdsourcing, Shared Computing, CDN, Blockchain, Token}, % list of keywords
+}
 
 \begin{document}
-
 \maketitle
 \pagenumbering{roman}
 
@@ -65,6 +71,7 @@
 %\keywords{CDN, NFS, Back to Source, Elimination, Deletion, Directory Traversal, Parallelism, Power-law Distribution}
 
 \tableofcontents
+\newpage
 \pagenumbering{arabic}
 
 \input{chp/chp1}
@@ -75,60 +82,3 @@
 %\bibliography{IEEEabrv,ref}
 %\addcontentsline{toc}{chapter}{参考文献}
 \end{document}
-
------ How to Compile -----
-
-This LaTeX manuscript should be saved as UTF-8 encoding, and be compiled by
-
-* LaTeX - DVIPDFMx or,
-* pdfLaTeX or,
-* XeLaTeX or,
-* LuaLaTeX.
-
-Note that, the later two compiling method are recommended.
-
------ Fonts -----
-
-The collection CTeX at version 2.0 or later has the ability to detect what
-kind of operation system that you are using. As a result, the collection will
-automatically choose an appropriate fontset for the specific OS.
-
-* Mac OS X - SinoType（华文） will be selected
-* Windows  - Sim（中易） will be selected
-* Others   - Fandol, which is distributed alone with TeX Live, will be selected
-
-Since the fontset SinoType couldn't work under pdfTeX, you may only use XeLaTeX
-and/or LuaLaTeX on Mac OS X. Otherwise, you will have to choose a fontset
-manually.
-
------ Environment -----
-
-Tested with TeX Live 2015 on Mac OS X (10.9.5).
-
-* xetex       r37058      3.14159265-2.6-0.99992 (TeX Live 2015)
-* pdftex      r37159      3.14159265-2.6-1.40.16 (TeX Live 2015)
-* luatex      r37078      Version beta-0.80.0 (TeX Live 2015) (rev 5228)
-
-* CTeX        5d27e06     v2.0 2015/05/08
-* CJK         r36951      v4.8.4
-* xeCJK       r35946      v3.3.0
-* LuaTeX-ja   r36992      20150420.0
-
-Hope these information useful for TeX newbies :-)
-  Liu Yubao <yubao.liu at gmail dot com>
-
-ChangeLog:
-  2009-09-11  Liu Yubao
-      * initial version, v0.1
-
-  2009-09-13  Liu Yubao
-      * use zhwinfonts to embed truetype fonts with pdflatex and dvipdfmx
-      * set hyperref properly for different encodings and TeX engines to avoid garbled bookmarks
-      % release v0.2
-
-  2010-06-20  Liu Haiyang
-      * simpify zhwinfonts and hyperref, v0.3
-
-  2015-05-08  Liam Huang
-      * CTeX 2.0 is about to release
-      * v0.4
