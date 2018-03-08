@@ -1,0 +1,5 @@
+// https://ecs.aliyuncs.com/?Action=CreateInstance&RegionId=cn-hangzhou&ImageId=_32_23c472_20120822172155_aliguest.vhd&SecurityGroupId=sg-c0003e8b9&HostName=Bctest01&InstanceType=ecs.t1.small&OTHER
+{
+    "RequestId": "04F0F334-1335-436C-A1D7-6C044FE73368",
+    "InstanceId": "i-instance1"
+}

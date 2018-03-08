@@ -1,0 +1,46 @@
+// https://maps.googleapis.com/maps/api/geocode/json?address=The+Hong+Kong+University+of+Science+and+Technology,+HK&key=YOUR_API_KEY
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "eco park of Hong Kong University of Science and Technology",
+               "short_name" : "eco park of Hong Kong University of Science and Technology",
+               "types" : [ "establishment", "point_of_interest" ]
+            },
+            {
+               "long_name" : "New Territories",
+               "short_name" : "New Territories",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Hong Kong",
+               "short_name" : "HK",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "eco park of Hong Kong University of Science and Technology, Hong Kong",
+         "geometry" : {
+            "location" : {
+               "lat" : 22.2917485,
+               "lng" : 114.2715461
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 22.29309748029151,
+                  "lng" : 114.2728950802915
+               },
+               "southwest" : {
+                  "lat" : 22.2903995197085,
+                  "lng" : 114.2701971197085
+               }
+            }
+         },
+         "partial_match" : true,
+         "place_id" : "ChIJ4zH1nr0DBDQRkUCpaBPw07Y",
+         "types" : [ "establishment", "park", "point_of_interest" ]
+      }
+   ],
+   "status" : "OK"
+}

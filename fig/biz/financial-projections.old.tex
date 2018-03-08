@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+\begin{axis}[
+width=0.96\linewidth,
+height=0.60\linewidth,
+%ybar stacked,
+ybar,
+area legend,
+legend style={at={(0.4,0.96)}, anchor=north},
+symbolic x coords={2016, 2017, 2018, 2019, 2020, 2021},
+xtick=data,
+ymin=-400000,
+ylabel=HKD,
+enlarge x limits=0.1
+]
+\addplot[ybar,fill=blue] coordinates {
+	(2016, -0.400000) (2017, 5.36) (2018, 24.443) (2019, 35.688) (2020, 49.758) (2021, 69.177)
+};
+\addplot[ybar,fill=red] coordinates {
+	(2016, 0.500000) (2017, 4.24) (2018, 13.957) (2019, 18.072) (2020, 15.506) (2021, 36.193)
+};
+\addplot[ybar,fill=green] coordinates {
+	(2016, 0.100000) (2017, 9.6) (2018, 38.4) (2019, 53.760) (2020, 75.264) (2021, 105.3696)
+};
+\legend{Gross Margin, COGS, Revenue};
+\end{axis}
+\end{tikzpicture}

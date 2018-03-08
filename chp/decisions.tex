@@ -1,0 +1,375 @@
+\chapter{Key Insights, Philosophy, Choices and Decisions}\label{sec-decisions}
+Big things start small. In this chapter, we provide further details about what we have chosen to do and why we have chosen to do it. Then, at the end, we introduce several high priority projects. 
+
+\section{The Power of International Standards}
+Today, people who frequently download media files occasionally come across legacy video formats like \texttt{.avi}, \texttt{.rmvb}, or \texttt{.mkv} , albeit for the last few years, almost all videos have been encoded in H.264/AVC and encapsulated in MP4 containers, with a \texttt{.mp4} extension (see Figure~\ref{fig:video-formats}). This is mainly because the said technologies had been standardised by working groups from MPEG, ITU and ISO/IEC. No matter what proprietary codecs a particular browser or client supports, it must support international standardised formats at the same time. In the case of video formats, \texttt{.mp4} is essential, but this is merely one example among many relevant international standards.  
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=0.80\textwidth]{fig/decisions/video-formats.png} 
+	\caption{Changes of prevalent video formats.}\label{fig:video-formats}
+\end{figure}
+
+Just as media file extensions have undergone change, computing paradigms have as well. 
+Parallel Computing was primary designed to speed up vision and graphics rendering via PC's CPUs and/or GPUs. It required low-level programming with OpenMP, Cilk, TBB, CUDA, OpenCL or other low-level concurrent/parallel libraries. This was then replaced with Distributed Computing. Network and storage capabilities were integrated, while some required hand-written networking or file system operation code. In addition, resource allocation and task scheduling should also be handled by programmers. Today, Cloud Computing has encapsulated the above two, and it relies on another international standard --- the representational state transfer (RESTful) architectural style used for web development. Cloud providers rely on REST so as to improve network management, simplify updates and facilitate safe third party development, as they only expose RESTful APIs to the users or developers at the application layer. 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.80\textwidth]{fig/decisions/parallel-to-cloud.png} 
+	\caption{Changes of computing paradigms.}\label{fig:parallel-to-cloud}
+\end{figure}
+
+The Cloud RESTful APIs are mostly represented in JSON format. Figure~\ref{lt:googlemaps-api} outlines a JSON response result of Google BigQuery's \texttt{getQueryResults} API. 
+\lstinputlisting[caption={JSON Result of a Google BigQuery API.},label={lt:googlemaps-api}]{code/bigquery.json}
+
+One may argue that JSON versus XML is an exception, as XML is an ISO standard but it is used less and less than JSON in many scenarios, such as cloud APIs. However, if you view JSON from another angle, it is a part of JavaScript, one of the ISO-standardised programming languages \cite{ecmascriptiso} \footnote{The current four ISO-standardised programming languages that are still popular are C, C++, Ada, and JavaScript. However, Ada is used only in military applications.}. Besides, JavaScript is now the main language manipulating the Web. 
+
+Going back to the Web, before HTTP and HTML, Gopher was one protocol that facilitated distributing, publishing, searching, and retrieving documents over the Internet. Unfortunately, when the Web became standardised, Gopher almost disappeared from popular applications. 
+
+Before WebRTC, there was another dominant technology that enabled browsers with video/audio decoding, and even P2P capabilities. It was Adobe's Flash plug-in. Flash technologies are 100\% proprietary, as argued in Steve Jobs' letter on Adobe Flash \cite{thoughts-on-flash}, while HTML5 is not. Today, almost all web browsers are moving away from Flash \cite{ff-away-flash}, and even Adobe no longer supports Flash. This transformation will also create lots of new business opportunities. 
+
+Therefore, taking a long-term view, only open and standardised technologies will survive in the future. 
+
+Accordingly, Pear has chosen to embrace several new and upcoming protocols that have just become or will soon become international standards:
+\begin{itemize}
+	\item Pear mainly uses WebRTC for end-to-end data communication. 
+	\item Pear works with DASH for media content representations. 
+	\item Pear mainly adopts WebSocket for client-to-server signalling. 
+	\item Pear represents its service APIs mainly in JSON, as well as in XML in some places. 
+	\item Pear's Fog components are implemented in C, which makes them portable across all types of devices; Pear's initial SDK will be provided in JavaScript, which is the most web-friendly language. 
+\end{itemize}
+
+\section{From Cloud to Fog}
+\subsection{Problems of the Cloud and Advantages with the Fog}
+Here is an incomplete list of current problems of the pure Cloud model: 
+\begin{itemize}
+	\item Long latency\\
+	The communication latency is positively correlated with the physical distance and the number of hops (paths between routers) between the client and the Cloud. More and more financial and industrial applications require millisecond-level latencies, which can hardly be satisfied with pure-Cloud models.   
+	\item Wasting power, computation, and bandwidth resources.\\
+	In pure-cloud systems, each client has to communicate with the Cloud upon every state-change or data-generation, let alone deal with the pervasive heartbeat messages. Just think about whether it is necessary for data to circle round ({\em i.e.} get transmitted data thousands of km away, get processed, and then delivered back) all the time? Moreover, if there are billions of clients, what kind of pressure will be brought to the backbone networks?  What is worse, clouds consume much more electricity and resources than they truly need. Take China as an example: ``Cloud'' data centres in China consumed 100 billion kWh of electricity in 2014, but only 6\%--12\% was used for processing tasks, and the rest was wasted when servers were idle. 
+	\item Still expensive\\
+	Most service providers ({\em e.g.} CPs) have to pay a considerable amount of fees for the IDC resources, especially in bandwidth. For some large CPs ({\em e.g.} Tencent), bandwidth cost constitutes over 50\% of the total operational cost. Moreover, the cost of storing historically accumulated data cannot be neglected when the data volume is large, although the cloud storage cost had fallen to less than RMB~0.1 per GB per month as of 2012. 
+	\item Single point of failure risks\\
+	Remember that clouds have control or ``master'' nodes. Because of routeing and load-balancing needs, data access points are essentially centralised. Today, there is a nefarious underground industry, from which individuals and institutions can easily buy CC, DDoS or NTP amplification attacks, DNS hijacking or poisoning, and even customised intrusion services to harm their rivals or competitors. If one control node is under attack, the service may be unavailable or unreachable. Beyond these, as Internet giants monopolise users' data, information islands can easily be formed due to the lack of a sharing mechanism. One may still remember the cancellation of Google Wave, Google Reader and Google Code, the capacity reduction of Microsoft OneDrive, and the change of allowed synchronised clients of Evernote. If a monopolising giant just changes a single service term or policy, how many data disasters will there be?   
+	\item Security and privacy issues\\
+	The essentially centralised storage (as well as control or access points) of the Cloud increases the risk of data leakage. Recall \emph{iCloud Nude Leaks} in the US, as well as database ``drag'' incidents of hotel chains, travel agencies, and web forums in China: users essentially have no control over their data stored in clouds, because it is centralised and far away. 
+	\item Not being scalable in the ongoing explosion\\
+	Suppose a video sharing startup wants to expand to the size of YouTube; will it have enough power resources to transcode all the content in real-time? Alternatively, imagine a gene analytics company wanting to scale up its business to perform DNA sequencing or gene analysis; will it have enough computation power to undertake this task? In the future IoT, a pure Cloud model will definitely not be enough for handling the massive number of constantly-online smart devices that is increasing by orders of magnitude. 
+\end{itemize}
+
+Given the above problems of the Cloud, the Fog has definite advantages: 
+\begin{itemize}
+	\item Its ability to offload the pressure of the Cloud\\
+	Fog can undertake simple tasks that eat up a great portion of the Cloud resources.
+	\item Physical proximity to end-users\\
+	Fog nodes are as near as 0-hop to users, so the Fog can achieve higher performance \& lower delay in most scenarios. Kevin Kelly even predicted that by 2020, over  2/3 of data will be processed locally (within 1km from where it is generated), instead of being uploaded to the ``Cloud''\footnote{\url{http://www.cyzone.cn/a/20141027/264795.html}}. In addition, fog nodes are near users' sensors or computing devices, which are placed in their living environments and generally not accessible directly from remote clouds. 
+	\item Low cost\\
+	How many Wi-Fi routers are online 7/24? How many unused USB drives do you have? With some \textbf{rebate} incentives, fog has the potential to utilise users' idle resources in a crowdsourcing way, create a new sharing economy in computing and thus lower everyone's costs.  
+	\item Eco-friendly characteristics\\
+	Most computer programs are either data parallelisable or task parallelisable. In fact, we can achieve linear speedups in most parallelisation work. Obviously, low-power fog nodes are more eco-friendly in processing these tasks (refer to the Section~\ref{sec-dg-vs-dc}).
+	\item Huge amount of resources\\
+	With a strong and sustainable sharing business model with multiplexing, all Internet users, AP device vendors, operators and service providers can participate in the Fog. 
+\end{itemize}
+
+\subsection{Where Fog Works}
+\subsubsection{Hardware Resources Analysis of the Fog}\label{sec-hardware-res-analysis}
+We now perform an analysis of the different hardware resources in the Fog (Table~\ref{tb:analysis-fog-resources}). 
+\begin{table}[ht]
+	\small
+	\centering
+	\caption{Analysis over different types of fog hardware resources.}\label{tb:analysis-fog-resources}
+	\begin{tabular}{p{0.16\linewidth}p{0.79\linewidth}}
+		\toprule
+		Resource Type & Suitable For \\ 
+		\midrule
+		CPU \& GPU  & Logical \& numerical processing, computing, analytics, rendering, coding, and (deep) learning\\
+		RAM            & Data relay, live streaming, VoIP, video conferencing, broadcasting, dynamic accelerations\\
+		Storage\tablefootnote{May only be available in some smart APs.}      & VoD, backup, distributed cache \& database, blockchains\\
+		IP Address     & Communication, signaling, certain applications requiring a multi-source effect\\
+		$\cdots$    & $\cdots$ \\
+		\bottomrule 
+	\end{tabular}
+\end{table}
+
+\begin{table}[htb]
+	\small
+	\centering
+	\caption{First Batch of Fog Applications.}\label{tb:proposed-fog-app}
+	\begin{tabular}{llc}
+		\toprule
+		Applications & Mainly Uses & Estimated Difficulty\\ 
+		\midrule
+		Media Coding & CPU and GPU cycles & $\star \star \star$ \\
+		E-mail Push\tablefootnote{Proposed by Francis Kowk, the CEO of RADICA Systems} & Node IPs/IDs, CPU cycles & $\star \star$ \\
+		VPN        & Bi-directional bandwidth & $\star \star \star$ \\
+		CDN        & Up-link bandwidth, storage(in VoD)  & $\star \star \star \star \star$ \\
+		IoT     & Proximity, reachability, computational power  & $\star \star \star \star$ \\
+		Distributed AI & Computational power, storage, network & $\star \star \star \star \star$ \\
+		$\cdots$     & $\cdots$  & $\cdots$ \\
+		\bottomrule  
+	\end{tabular}
+\end{table}
+
+\subsubsection{Proposed Applications}
+We can abstract a generalised model of fog applications, as depicted in Figure~\ref{fig:fog-generalised-model}. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.75\textwidth]{fig/fog-models/model.pdf}
+	\caption{A generalised fog model.}\label{fig:fog-generalised-model}
+\end{figure}
+
+We are working on several joint projects that can be launched first, as shown in Table~\ref{tb:proposed-fog-app}. With a \textbf{rebate} scheme, the collaboration will benefit \textbf{all} parties.  
+
+\section{A Stable Hardware Carrier} \label{sec-stable-carrier}% Do hardware!!!
+To get a revenue stream to start to flow as quickly as possible, we have to attract contractual or subscribed users. To attract and retain business users, we have to provide a stable, cost-saving and sufficient service. To provide the service, we have to find a sufficient number of suitable hardware carriers powered by Pear's fog programs. Figure~\ref{fig:issue-tree-fog-nodes} shows an issue-tree-like analysis of the hardware carrier solutions. 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1.0\textwidth]{fig/decisions/issue-tree-fog-nodes.pdf}
+	\caption{Issue-tree-like analysis of the hardware carrier solutions.}\label{fig:issue-tree-fog-nodes}
+\end{figure}
+
+Individual fog peers can be slow, forbidden, blocked, busy, over-loaded, unavailable, or unreachable. However, to provide fog services, the network size or the system capacity cannot fluctuate too often or too much. Therefore, we had better find stable hardware carriers to run our fog programs on. 
+As analysed in Section~\ref{sec-dev-hardware}, we have considered designing an all-in-one hardware device. Whatever form the hardware takes, it should have some AP capabilities, so the devices can serve as home/business Wi-Fi routers and gateways. Below are some of their attributes, online patterns, and advantages in their use scenarios: 
+\begin{itemize}
+	\item Stable\\
+	In fact, most AP devices in the real-world are online 24/7, so our devices should be too.
+	\item Relieving us from some NAT traversal problems\\
+	Most APs themselves are NAT devices with dedicated IP addresses. With simple port-forwarding tricks, a considerable number of the devices can work as fog servers that can be accessed from outside. 
+	\item Transparent and tolerable resource-scheduling plans\\
+	Different from the traditional P2P applications 10 years ago, which would ``steal'' the resources on PCs to serve others, scheduling the resources on AP devices to provide fog services has no influence over the users' Internet services since they are not devices the users are \emph{using} directly. In addition, we have monetised incentives for initial acceptance as well as ongoing tolerance of occasional bandwidth reduction (during some peak hours). 
+	\item Hardware compatibility and utility\\
+	The APs should be very versatile, as discussed in Section~\ref{sec-hardware-res-analysis}. 
+\end{itemize}
+
+To find a suitable hardware carrier, another thing we must do is to estimate the processing power in terms of ``performance per dollar''. 
+After analysing different types of devices, we found that the current TV-boxes can meet our three main requirements:
+\begin{itemize}
+	\item Meet our basic needs for running most fog components
+	\item Have a lower cost than most other types of devices
+	\item Have low energy consumption --- less than 15W Thermal Design Power (TDP)
+\end{itemize}
+
+It is hard to measure the performance in a single index or metric, but from the models in Table~\ref{tb:device-comparision}, we can easily see that a TV box is the most suitable platform to run Pear's fog programs, in terms of performance per unit of cost.  
+
+%\doublerulesep 0.1pt
+\begin{table}[htb]
+	\small
+	\centering
+	\caption{Performance-Price Comparisons of Different Types of Devices}\label{tb:device-comparision}
+	\begin{tabular}{p{0.13\linewidth}p{0.25\linewidth}p{0.25\linewidth}l}
+		\toprule
+		Device Type & Smart Phone & TV Box & Wi-Fi Router \\
+		\midrule   % \parbox[t]{\linewidth}{ARM A7 2.2Ghz $\times$ 4 + \\ARM A17 1.7GHz $\times$ 4}
+		CPU & \parbox[t]{8cm}{ARM A7 $2.2$\,Ghz $\times$ $4$ + \\ARM A17 $1.7$\,GHz $\times$ $4$} & ARM A7 $1.3$\,GHz $\times$ $4$ & MIPS 24KEc $580$\,MHz $\times$ $2$\\
+		GPU & PowerVR G6200 & Mali-400MP2 & N/A\\
+		RAM & $2$\,GB DDR3 & $1$\,GB DDR3 & $128$\,MB DDR2\\
+		ROM & N/A & $128$\,MB NAND Flash& $64$\,MB Nor Flash\\
+		Storage & $32$\,GB eMMC & $8$\,GB eMMC & N/A\\
+		Cost & CNY~$500$ & CNY~$80$  & CNY~$100$\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+From Table~\ref{tb:device-comparision}, we can see that the Pear smart router's ``all-in-one'' feature and the ``ARM'' facts and trends make it an easy choice for our hardware carrier. Regarding the Operating System, we will use embedded Linux first, and then later port all components to native programs on Android. Here is our rationale:
+\begin{enumerate}
+	\item Embedded Linux distributions, like OpenWrt, are widely used in smart routers.\\
+	So to utilise the existing components, we had better build on systems like OpenWrt.
+	\item The Android OS has the strongest ecosystem currently.\\
+	It works not only on smart phones, but also on TV-boxes, tablets, projectors, PCs, watches, and it should work on routers in the near future. Its community is even stronger than Windows. 
+	\item The technology that wins the developers wins the world.\\
+	This has been proven many times. 
+\end{enumerate}
+
+Finally, we will partner with existing hardware vendors, and at the same time, cooperating with them to make our own ``exemplary'' fog devices. Table~\ref{tb:pear-device-spec} shows proposed specifications of Pear's fog node device. 
+\begin{table}[htb]
+	\small
+	\centering
+	\caption{Proposed specifications of Pear fog device (smart router).}\label{tb:pear-device-spec}
+	\begin{tabular}{lc}
+		\toprule
+		Component & Specification\\
+		\midrule 
+		OS  & Linux, or Android with OpenWrt port\\
+		CPU & Intel Atom or Core M or ARM Cortex, Quad Core\\
+		GPU & Intel HD Graphics or ARM Mali\\
+		RAM & 1-4GB DDR3\\
+		ROM & 4GB NAND Flash\\
+		Storage & 32-128GB eMMC/HFS onboard, SSD/HDD extendible\\
+		Slots/Connectors & USB3.0 or Type C, SD/MMC\\
+		Networking & 100/1000Mbps Ethernet, 802.11ac Wireless\\
+		Shape & Compute Stick, or TV-Box like\\
+		Functionalities & Mini-server, NAS, Wi-Fi router, TV-Box, USB Drive\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\section{Fog for Content Delivery}
+Among all the potential revenue streams, fog content delivery is paramount. Below we justify its superiority over traditional content delivery over the Cloud, and then we list some key objectives in such content delivery systems. 
+\subsection{In Content Delivery, Where Fog Works Better}  % Time in-sensitive!!!
+
+For retrieving an image, a web page, a JavaScript, Flash, or CSS file, which is likely to be a few dozens of KBs in size, fog can hardly beat Cloud. Typically this kind of job can be done within a few hundreds of milliseconds, even taking the RTT into account. By contrast, in a typical fog system which is organised in a structural P2P fashion, where peers and resources are indexed by DHTs. Each query is expected to be routed through a few $\log(n)$ hops (where $n$ is the network size), so roughly throwing these jobs to the Fog will induce a large delay. 
+
+Even in traditional CDNs, handling small-sized data is usually done in a reverse-proxying fashion, as: 
+\begin{enumerate}
+	\item there might also be routeing delay in querying the cloud storage system; 
+	\item redirection mechanisms such as HTTP 302 incur a considerable delay that is much higher than the transmission/processing time.  
+\end{enumerate}
+Figure~\ref{fig:cdn-req} depicts different request-response models in CDNs. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.72\textwidth]{fig/decisions/CDN_req.pdf}
+	\caption{Request-Response models in CDNs.}\label{fig:cdn-req}
+\end{figure}
+
+We do not even need to mention fog, which is obviously not suitable for small sized static content. Instead, we further analyse the use of fog in four different content service scenarios:
+\begin{description}
+	\item[VoD.] VoD is mostly latency-tolerable; fog takes on the relatively hot portion of all content. Fog helps achieve two main benefits: 
+	\begin{itemize}
+		\item High total bandwidth along the edge with higher distribution density\\
+		Even if the per-connection rate is limited, we can aggregate the bandwidth with the help of multi-connection effects. 
+		\item Low bandwidth fees at the edge.\\
+	\end{itemize}
+	\item[Web Content.] This application is time-sensitive in content accessibility, and the data volume is huge. Fog only helps with the large-sized files. In terms of popularity, the hottest portion is already cached in traditional CDN edge regions and the coldest portion should be placed in data centres. Fog mainly helps the medium popularity content objects that are not popular enough to be cached on Cloud CDN edges. Fog helps achieve:
+	\begin{itemize}
+		\item Relatively low latency if with a considerable replication density
+		\item Lower bandwidth cost for content providers
+	\end{itemize}
+	\item[Live Streaming.] For interactive scenarios, fog is not suitable, because the application is too time-sensitive. Fog can well undertake 10-second to 2-minute delay channels, for example, live broadcasting and live event streaming with low or no user-interaction. 
+	\item[Historical Internet Archives.] These have huge amounts of files. When equipped with large storage capacities, fog nodes can also help to quickly replicate the cold portion, providing CPs with a multi-path delivery channel or failover solution. 
+\end{description}
+
+\subsection{Key Objectives for Fog Content Delivery}
+In this section, we list the key objectives of Pear's fog platform. This can also be deemed as an extension with architectural solution answers to the ``pillars'' part of the OpenFog white paper \cite{openfog}. 
+%Connectivity, Security, Interoperability, Transparency, Reliability, Availability, Serviceability, Scalability, Autonomy, Programmability, Proximity, Efficiency, Resiliency(Elasticity), Performance, Agility, Functionality, Utility, Hierarchy ...  Robustness  Profitability!!! (commerciality)    change to descriptions:
+\subsubsection{Connectivity, Reliability, Availability, Serviceability, Durability}
+As most user-end network devices are behind NATs and/or firewalls, and IPv6 is still not widely used, NAT traversal is critical in fog systems. 
+Although Pear's fog devices are also Wi-Fi APs with NAT capabilities, these devices may work behind users' or ISPs' NATs. 
+WebRTC has built-in STUN and ICE components to traverse cone-type NATs. However, a considerable portion ($\approx$ 30\%) of NATs are symmetric.  
+
+Ford {\em et al.}~\cite{Ford:2005:PCA:1247360.1247373} generalised the procedures of NAT traversal. To traverse symmetric NATs with random port assignment ($\approx$ 0.5\% of total routers), Tsai~\cite{sqt2008} proposed an brute-force ``occupying'' method, but it induced too much overhead. Wei~\cite{wei2008new} and Klinec~\cite{Klinec:2014:TSN:2659651.2659698} proposed methods by port prediction. 
+
+We build a hybrid [UPnP] + [PCP] (or [NAT-PMP]) + [ICE] solution to increase the connectivity at fog nodes. If a port mapping by UPnP or PCP can be successfully set up, then our fog nodes can serve as TCP and HTTP servers; otherwise we resort to STUN in ICE to establish a P2P connection on top of UDP. In our STUN implementation, we apply a machine learning-based mechanism to predict the range the next assigning port is likely to fall into. 
+
+We also use the parallel mechanisms in Trickle ICE to reduce the communication set-up delay. 
+
+Hence, our fog program on end-users' ``0-hop'' devices can be seen as a  super Web server that supports both HTTP and WebRTC as well as a P2P node. The architecture of Pear's fog node engine is roughly depicted in Figure~\ref{fig:pear-fog-node-engine}. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.75\textwidth]{fig/decisions/pear-fog-node-engine.pdf} 
+	\caption{Architecture of Pear's fog node engine.}\label{fig:pear-fog-node-engine}
+\end{figure}
+
+The system needs to survive and not fluctuate to some degree. Therefore, durability is a clear success factor. We mainly use monetary incentives to encourage end-users to power and run the devices in a stable and durable fashion. 
+
+\subsubsection{Proximity, Scalability, Autonomy}
+Both the Fog and the Cloud provide computation, storage, bandwidth, and application resources. Perhaps the most salient difference between the two is the Fog's proximity to users, the environment, and the underlying accessing nodes. The Fog is more localised, while the Cloud is more generalised. 
+
+In content delivery, to achieve high throughput and to confine traffic within ISPs, years ago, the Global Network Positioning (GNP) method was introduced. Its key idea is to approximately represent the complex structure of the Internet by a simple geometric space ({\em e.g.} an N-dimensional Euclidean space). In this representation, each host in the Internet is characterized by its position in the geometric space with a set of geometric coordinates. Usually, a number of stable servers are used as landmarks. 
+
+However, Choffnes~{\em et al.}~\cite{net-pos-edge} revealed that the Internet positioning from the edge at scale exhibits noticeably worse performance than previously reported in studies conducted on research testbeds. A few hundred of landmarks might be needed to capture most of the variance. 
+
+We devised an online node clustering method in which peers \texttt{ping} each other and form groups in an Expectation-maximisation (E-M) like way. With the help of Radix-tree and GeoHashing, our system allows fast $k$NN and range queries over the whole Internet topology. 
+In the near future, we plan to implement this component into ALTO and DHT protocols. 
+
+Beyond gossip protocols like SCAMP \cite{SCAMP}, we will support hierarchical peer regions/groups.  
+
+\subsubsection{Security}
+Security is a big issue across all layers. Security in Pear's fog can be categorised into two aspects:
+\begin{enumerate}
+	\item Security for CPs' content and control;
+	\item Security for end-users' devices, data and privacy. 
+\end{enumerate} 
+
+Currently, we do not have enough human resources to ensure a 100\% secure system, but building a TLS layer with bi-directional host verification can ensure security for most of the scenarios in the above aspects. Figure~\ref{fig:TLS-hypo} is a Hypothesis-Tree-like analysis of why to construct this TLS layer at an early stage.  
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.00\textwidth]{fig/decisions/tls-hypothesis.pdf}
+	\caption{Hypothesis-Tree-like Analysis on the TLS issue}\label{fig:TLS-hypo}
+\end{figure}
+
+To ensure data integrity and avoid data being replaced by illegal content, Pear will implement its own Self-verifying File System (SFS) with \texttt{lfuse}. 
+
+\subsubsection{Interoperability, Transparency, Programmability}
+WebRTC endows the system with strong interoperability with the Web world. In addition to it, we provide SDKs for different platforms such as Windows, Android and embedded Linux. 
+Our SDKs work nearly transparently. Section~\ref{sec-streaming-protocolic} shows a one-line enabling demo for the web front-end. 
+We also provide plug-in development capabilities on top of Pear Fog components. To program with Pear Fog, a developer is just required to override or implement a few call-back functions. 
+
+\subsubsection{Efficiency}
+Different from BitTorrent's design logic, Pear's Fog system cares more about efficiency than fairness or equality. 
+On top of the shared platform and resources, Pear implements different algorithms for different service scenarios. 
+
+\subsubsection{Resiliency, Elasticity, Agility}
+We will soon develop an automatic Operating Support System (OSS) that distributes solid and reliable agents to every fog node, partly as described in the U-2 project in Section~\ref{sec-medium-term-projs}. 
+
+\subsubsection{Commerciality, Profitability}
+Last but not least, every service the Fog platform provides shall be business-friendly. Cooperating with CPs, Pear is going to create a digital coin and build sustainable monetary incentives. 
+As discussed before, we will try our best to introduce a strong Android eco-system to our platform and make the plug-in development profitable. We will try to win the developers --- from the beginning.
+
+\section{The Economy of Attention and User-centric Innovation}
+As the amount of information increases, the most valuable resource becomes attention --- not the information itself. During the past decade, most successful marketing philosophies were built on top of ``the economy of attention''. However, this inherently embeds in an ``informing'' thought and often aims at a deal or a transaction. It lacks warmth and ignores the humanistic solicitude of customers. 
+
+Now there is a shift from ``the economy of attention'' to ``the economy of willingness''. 
+
+The customers not only engage in the design but also create and share value among themselves in the communities. It is user-centric: no informing or persuasion -- just touching users' hearts through deeds and matters of the heart. In an era of a willingness economy, engagement in design and production is more important than obtaining the product. The competitiveness of future enterprises will lie on the ability to turn willingness into demand. 
+
+Before turning willingness into demand, we have to create the willingness, and before creating the willingness, we have to build up a good image. Pear partners will actively participate in technical web forums on OpenWrt, Android, or wireless routers. A considerable number of the members of these communities are likely to be Pear Fog's early adopters, both for software and hardware. 
+On the other hand, they can also serve as volunteers to help improve Pear's products. 
+
+\section{A Single-point Breakthrough}
+For a small start-up, it is not wise to do something which is obviously occupying a giant's main road before it. Instead, most successful start-ups have grown big because they grabbed a narrow trail that had the potential to lead to a broad land where they could dominate. At first, their trails then looked so trivial and non-profitable that the giants saw no value in paying attention, let alone putting resources into them. 
+
+We minimise our potential projects to a single thing: iWebRTC, a smart fog gateway that
+\begin{itemize}
+	\item supports all Web-friendly protocols such as HTTP, WebRTC, and WebSocket;
+	\item supports all P2P-friendly techniques such as uTP, UPnP, PCP (or NAT-PMP), STUN, Trickle ICE, DHT, GOSSIP and ALTO; 
+	\item unites the Fog, the Cloud, and the Web. 
+\end{itemize} 
+
+It is an all-purpose project that connects: 
+\begin{itemize}
+	\item the router world and the browser world
+	\item the communication domain and the computing domain
+	\item the circuit switching net and the packet switching net
+	\item the very back-end and the very front-end    
+\end{itemize} 
+
+Moving forward, this project enables us to perform domain-specific applications, such as healthcare; going backward, this project enables us to do better traffic-related services. 
+
+We will try our best to make a single-point breakthrough on top of it. We expect that in a foreseeable time ({\em i.e.} 2-3 years), Pear's iWebRTC will be to the real-time data/media communication world what Nginx has become to the Web server field. 
+
+Specifically, in the first stage, even for the WebRTC stack, we will avoid jumping too deeply into the media codec part, because this part is still not settled within the standardisation committee, as it is where giants fight with each other (see Figure~\ref{fig:giants-fight}). 
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.86\textwidth]{fig/decisions/giants_fight.jpg} 
+	\caption{Video Coding Standards: where giants fight.}\label{fig:giants-fight}
+\end{figure}
+
+
+\section{Three Medium-Term Projects of Pear}\label{sec-medium-term-projs}
+\begin{description}
+	\item[Manhattan] First of all, we will create a business that utilises the idle bandwidth at the user-end to help with a lot of fog computing scenarios. Our core is the software suite that runs on the devices that process the data requests, plus the ``coordinator'' programs on our servers that optimise the traffic on the whole network. Our architecture and algorithms greatly outperform the traditional ones. It is like an atomic bomb. So we have named this part the ``Manhattan'' project. 
+	
+	\item[B-29] But even if we successfully make an atomic bomb, we will still be unable to drop it on our enemy -- because it is too far away and we have no long-range carrier. Obviously, we should develop a software launcher beforehand. It must automatically update itself and work in an incremental and peer-to-peer fashion, thus saving bandwidth --- imagine tens of millions of clients: how can we update them all to the latest version in a single day? We need a combination of the advantages of Google's, Microsoft's, and Tencent QQ's updating schemes. We call this one the ``B-29'' project. This project also contains a hardware carrier selection process. 
+	
+	\item[U-2] After the above two weapons are done, the system will be in operation. To save as much labour-cost as possible, we should also develop a system that monitors and manages the devices anywhere and everywhere. It should also work automatically as much as possible and provide fault-tolerance capabilities. This system is to us in our competition what the U-2 plane was to the US in the cold war. 
+	
+	\begin{figure}[ht] 
+		\centering 
+		\subfigure[B-29.] { \label{fig:Manhattan} 
+			\includegraphics[width=0.33\columnwidth]{fig/decisions/B-29.jpg} 
+		} 
+		\subfigure[Manhattan.] { \label{fig:B-29} 
+			\includegraphics[width=0.27\columnwidth]{fig/decisions/fat-man-little-boy.jpg} 
+		} 
+		\subfigure[U-2.] { \label{fig:U-2} 
+			\includegraphics[width=0.33\columnwidth]{fig/decisions/U-2.jpg} 
+		} 
+		\caption{Three metaphors of the 3 pivotal projects of Pear.} 
+		\label{fig:3projs} 
+	\end{figure}
+\end{description}
+
+\newpage

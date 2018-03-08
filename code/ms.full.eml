@@ -1,0 +1,83 @@
+Received: from SG2PR01MB0751.apcprd01.prod.exchangelabs.com (10.169.52.13) by
+ KL1PR01MB0743.apcprd01.prod.exchangelabs.com (10.165.16.141) with Microsoft
+ SMTP Server (TLS) id 15.1.409.15 via Mailbox Transport; Wed, 24 Feb 2016
+ 06:18:08 +0000
+Received: from SIXPR01CA0021.apcprd01.prod.exchangelabs.com (10.163.105.149)
+ by SG2PR01MB0751.apcprd01.prod.exchangelabs.com (10.169.52.13) with Microsoft
+ SMTP Server (TLS) id 15.1.409.15; Wed, 24 Feb 2016 06:18:07 +0000
+Received: from AM1FFO11FD032.protection.gbl (2a01:111:f400:7e00::182) by
+ SIXPR01CA0021.outlook.office365.com (2a01:111:e400:b429::21) with Microsoft
+ SMTP Server (TLS) id 15.1.415.20 via Frontend Transport; Wed, 24 Feb 2016
+ 06:18:06 +0000
+Authentication-Results: spf=softfail (sender IP is 143.89.12.152)
+ smtp.mailfrom=cse.ust.hk; connect.ust.hk; dkim=none (message not signed)
+ header.d=none;connect.ust.hk; dmarc=none action=none
+ header.from=hxcs1g8.supear.cn;
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ cse.ust.hk discourages use of 143.89.12.152 as permitted sender)
+Received: from mx2.ust.hk (143.89.12.152) by
+ AM1FFO11FD032.mail.protection.outlook.com (10.174.64.221) with Microsoft SMTP
+ Server (TLS) id 15.1.422.5 via Frontend Transport; Wed, 24 Feb 2016 06:17:59
+ +0000
+Received: from cse.ust.hk (cssvr7.cse.ust.hk [143.89.41.157])
+	by mx2.ust.hk (8.14.4/8.14.4) with ESMTP id u1O6Hunr007979
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NOT)
+	for <qzhuang@ust.hk>; Wed, 24 Feb 2016 14:17:56 +0800
+Received: from CSMS07.win2k.cs.ust.hk (exchange.cse.ust.hk [143.89.41.19])
+	by cse.ust.hk (8.14.9/8.12.5) with ESMTP id u1O6HuKD017657
+	(version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qzhuang@ust.hk>; Wed, 24 Feb 2016 14:17:56 +0800
+Received: from cssvr7.cse.ust.hk (143.89.41.157) by CSMS07.win2k.cs.ust.hk
+ (143.89.41.19) with Microsoft SMTP Server (TLS) id 14.3.248.2; Wed, 24 Feb
+ 2016 14:17:35 +0800
+Received: from cse.ust.hk (bkmail.cs.ust.hk [172.16.41.157])	by
+ cssvr7.cse.ust.hk (8.14.9/8.12.5) with ESMTP id u1O6HmSO017641	for
+ <qzhuang@cse.ust.hk>; Wed, 24 Feb 2016 14:17:48 +0800
+Received: from hxcs1g8.supear.cn (dy144-193.ust.hk [143.89.144.193])	by
+ cse.ust.hk (8.14.9/8.13.7) with ESMTP id u1O6Hg13010718	for
+ <qzhuang@cse.ust.hk>; Wed, 24 Feb 2016 14:17:48 +0800
+Authentication-Results: cse.ust.hk from=ust@hxcs1g8.supear.cn; sender-id=pass; spf=pass
+Received: from hxcs1g8.supear.cn (unknown [119.29.32.138])	by
+ hxcs1g8.supear.cn (Postfix) with ESMTP id 37B181A00EA	for
+ <qzhuang@cse.ust.hk>; Wed, 24 Feb 2016 11:59:20 +0800 (HKT)
+Date: Wed, 24 Feb 2016 11:59:19 +0800
+To: <qzhuang@cse.ust.hk>
+From: <ust@hxcs1g8.supear.cn>
+Subject: RADICA-Pear Fog Email Delivery beta Test
+X-Mailer: swaks v20130209.0 jetmore.org/john/code/swaks/
+X-Env-From: ust@hxcs1g8.supear.cn
+X-Remote-MTA: 143.89.144.193
+MIME-Version: 1.0
+Content-Type: text/plain
+Message-ID: <264ba8af-b65d-489f-8903-385d1a5110ef@CSMS07.win2k.cs.ust.hk>
+Return-Path: SRS0=mY9vzkqg=OX=hxcs1g8.supear.cn=ust@cse.ust.hk
+X-MS-Exchange-Organization-Network-Message-Id: 87c2ab7e-890c-4af2-0613-08d33ce23edf
+X-EOPAttributedMessage: 0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-Forefront-Antispam-Report: CIP:143.89.12.152;CTRY:HK;IPV:NLI;EFV:NLI;SFV:SKN;SFS:;DIR:INB;SFP:;SCL:-1;SRVR:SG2PR01MB0751;H:mx2.ust.hk;FPR:;SPF:None;LANG:en;
+X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:(71701003);SRVR:SG2PR01MB0751;
+X-MS-Office365-Filtering-Correlation-Id: 87c2ab7e-890c-4af2-0613-08d33ce23edf
+X-MS-Exchange-Organization-AVStamp-Service: 1.0
+X-MS-Exchange-Organization-SCL: -1
+X-Exchange-Antispam-Report-Test: UriScan:;
+X-Exchange-Antispam-Report-CFA-Test: BCL:0;PCL:0;RULEID:(601004)(2401047)(13018025)(13016025)(8121501046)(3002001)(10201501046);SRVR:SG2PR01MB0751;BCL:0;PCL:0;RULEID:;SRVR:SG2PR01MB0751;
+SpamDiagnosticOutput: 1:2
+SpamDiagnosticMetadata: ca2853ad801f4d6bb04606bbac945a33
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Feb 2016 06:17:59.4622
+ (UTC)
+X-MS-Exchange-CrossTenant-Id: 6c1d4152-39d0-44ca-88d9-b8d6ddca0708
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR01MB0751
+X-MS-Exchange-Organization-AuthSource: AM1FFO11FD032.protection.gbl
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:08.9445626
+X-Microsoft-Exchange-Diagnostics:
+	1;AM1FFO11FD032;1:psPoTa4i2ebW7ei3Onl2PRR6Zmw084ybGuPDQvNKF+LTt1BXVf5r7o2S1oYlgx65oFlPNR0qT7L3AN+PMBg5IzYV5O35KnOGWS45IpW4T6yTXJTaUgKZu+k7QCdOCVDffQQDTA7HaokCZ8ScKn3VWudL5nKHPf7+6rqPJQcPrMX3q6q/giuhXvlk8u67Xb6Sl6vMSxpzZdJA8I7yj0u8I+d387ZUgRm9t75+V7FYAdHJ6rh09+kdYRYXnZuKHqjUYu/sc2XU3OOEqia5ygSWV2UBZTyNgbo8/DoEkBR0kOopvOQfYm2w++goSj9185WbdZV0zl/yNyWQELFbE50Zujx5qadxXCVUiOEx4VhsCVZnwPvQh74myxyFh+YmYUxiH3Ics5PjpV+giZxf6x/KhIkexPp9gMOs72IJ76QqQbgp/Yvlg+HHjH/R0bt788yaxIJzfFCSfX9uA98nls726g==
+X-Microsoft-Exchange-Diagnostics:
+	1;SG2PR01MB0751;2:iTGefJ88YpeKwozy9u7QRjJ/nzRDe5kibmnC23VgKA6VIsDpCjskF6Qo/ZARg2T00DaCuXf47d4BaKm0HiNocwOw+uDVxe7cDhm8iiv0ZoQsj5KAiTMjJoZBQJSzDUICu+BN1zZIV1zLDcUN+7pbqQ==;3:Ie5AXx9IUmfysjcFEbQOztCnSXHNkpp0kVwgCLArvocNl/BF93f4N/SdjiHE6GiJ2Rtba9QvGR+y6OfbDNLrvyL9PWVPHSnVVXrlXa3bJv01W9WUsw8zDlVthtIh6SQknNPg5uoeK5uQDB+rz1PKIXTEuDSWxiF33VKJ8aDWXnEORgr+5LkGDyvrufJpRqK0g07LaYdkX1+FaVrOx4Pa3iukzZe57LkDSRgDr4f00+3DfHx89D2RtW89dmgctuQf;25:V5kYNCYNhj8srYE58DW+PNubdZhEDZEhN/HkGpqp+NutFA3fVQCdhsFpQx6S3mIhPUwRjmaEvdzq3TO/ZAjbOPCHZYoOcmd6hjIFVzvyawDYFjG3OKuGtlaBGZamYixiSRy4rAJL4DvgAWi9H91uRGuQAr4I9R5b9hTHDGm4Uw9i7IIH5LlhqkYQNyQTM7R9eEmugm/OBn+ojL7S7MqT55q00m0d683BPV/DLAY8xbUIWqvQvq3dK1DYG0NXpIi8oLU6YOzBXumgrLLil91WK6m4xWO3hNOyDCiDjV7A3IAXMJqeHeAAsdYJ++vBJbzOOrZNBS6KvBwEeYLawlTNaQ==
+X-Microsoft-Exchange-Diagnostics:
+	1;SG2PR01MB0751;20:QWrpCNOG+BGlInQYK42wM1mL6Ns3MAQsRwya89PGcvhSEY/dDxutOL6mSEZVdXAZeSYF+JBMspWnuBZPH6ZUoaE1SpYczkKIVtSuQv5LWgxtcHpPQNCzuUNktDVLItD70qWZmY/clQCUD1vCblsaEULTrw7cBkskEzKKS2bB/jdJedUr0cmcjj0ENAaXjswkBOocDgNxZ50Ggo8lMWWRXjwhTJ5tkMbLHwSgF1MZTkGqMUR9TE1zpifs7PLguV/e7ufOaIAi4shnp2zte1ieTy2SSOAqfzkQUH7ZwCFRpa/DQAgNTRZsAFjylY6sWSemc5XxXMZyRknvdu3DjyU4ccPl4ySUV9QzlUyQTnnTeUcQ+tTPHqi4zy5EbdFEb1NG/ctWz+zwRr3HSHOwdlvrfstdyUnKwnlz+0U9i9EP6XhwQqkMo+8PLkKK1XMJQKD2;4:chnQt8RoCKOZ83kQL5tIzQ5R77zxw0gKsX3Xh+EXJEpjo8CoATzxtdYETgNG7y4QRWy/vnCglu4fwIlBKOqXhmLAAGog0Az72T6whmzKFaV/sKhx0emFX9ysZ6cfIcfux5kD4Zk3uPbjMmngKVoQVaaShdXJsrOsd9d8l0fdV1+dH2lV365PTIQPCn3WHDOjrtDONkWpRHvGmmUexpzNi69vwoeSjysvy9i5Y33SKZEOTHL4huPhtGJUdYKSSHUuAzDMle3wA5piUdc0hhFS5g17fl0iMFr3fjK/khSeRFx5yjonTapJi8MKXLeJ8zLpi5kjgN4w+P86cei1YCIqr5BoWBsLys6EZHhu5ZiYtbcLqsRcmVHuejJp8SezdfH+GX4GPD7CCq6Dwx010Iec5A==
+X-Microsoft-Exchange-Diagnostics:
+	1;SG2PR01MB0751;23:uiIBeDkZmIT84FUbrAsJ0sLoRyVhLetGs0Jk3t/DEq+/GRQO3WRNBfb73G0/X4/w/Pz7wzGhmQ1vq8QvsUY1oS6i9PqdEAPfQxlBSNATscp1qD0HUWrBPWt3w81SG7aZdP7NT97P9zCjjoCv5WPr/lFKIx6czt/IR6CPkJhSFSeLtUIwz6vnQv1SzCxbr2a7OMV5dJUyGKZuJdGzZPZDmA==;5:wS+E4o88RlSxdcUVrMdNI25P9ahldbFcRDEBJ1qHv1pjA1gSBPFYibF0Wz34LjTQKMc3aYAbpe3xjykB727DD9PRuExx4dXTcOkPpm8BPDBAvyTS0ZrNlX7FSLH+1tHC5UMRnQEkrWZz7OGpXLdnqA==;24:tarJC7r05M+FIqJsTfyYBaWdRXfTtNuPvbcbe9haMPVfMCANy99k2wHQZlz5nzSbt/dMrpWvnRr9y76XbT3J9Ejz5arXuJlupqVFZQNgYB0=
+X-Microsoft-Exchange-Diagnostics:
+	1;KL1PR01MB0743;9:H1ZurtckisimK4dkKuGYArb3bDwqgx8b88QBJLwAzyD85JAepfmmWR1ZWxWuvWZ6PgTKp2LpGJgn8kgkkLtIBQXM+NHOmPhKGPUIZ/ykxUwnx7QGj3gVcTigkUKMWYdcqfrX/OO5bwR/qe2qjOkkSQ==

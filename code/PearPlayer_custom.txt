@@ -1,0 +1,19 @@
+<script>
+  PearPlayer('PearPlayer-rtmp', {
+    'type': 'rtmp/mp4',
+    'src': 'http://cp1.com/flv/channel1',
+    label: 'rtmp',
+    'isvr': 'false',     // 360 VR video
+    'token': '123456'    // free- or pay-channels
+  })
+  PearPlayer('PearPlayer-hls', {
+    'type': 'application/x-mpegURL',
+    'src': 'http://cp2.com/vod2.m3u8',
+    label: 'hls'
+  })
+  PearPlayer('PearPlayer-dash', {
+    'type': 'application/dash+xml',
+    'src': 'http://cp3.com/live-event3.mpd',
+    label: 'dash'
+  })
+</script>

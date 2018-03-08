@@ -1,0 +1,18 @@
+Received: from mxfront4j.mail.yandex.net ([127.0.0.1])
+	by mxfront4j.mail.yandex.net with LMTP id Yq5g0TGL
+	for <cheedoong@yandex.ru>; Fri, 15 Jul 2016 18:03:19 +0300
+Received: from smtpproxy19.qq.com (smtpproxy19.qq.com [184.105.206.84])
+	by mxfront4j.mail.yandex.net (nwsmtp/Yandex) with ESMTPS id hJEsEZSrrs-3Gtmq5RF;
+	Fri, 15 Jul 2016 18:03:17 +0300
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(Client certificate not present)
+Return-Path: ust@hxcs1g8.supear.cn
+X-Yandex-Front: mxfront4j.mail.yandex.net
+X-Yandex-TimeMark: 1468594997
+Authentication-Results: mxfront4j.mail.yandex.net; (*@\color{red}{spf=pass}@*) (mxfront4j.mail.yandex.net: domain of hxcs1g8.supear.cn designates 184.105.206.84 as permitted sender) smtp.mail=ust@hxcs1g8.supear.cn
+(*@\color{red}{X-Yandex-Spam: 1}@*)
+X-QQ-mid: bizesmtp3t1468594992t575t238
+Received: from hxcs1g8.supear.cn (unknown [143.89.144.193])
+	by Pear Mailer with SMTP id 0
+	for <cheedoong@yandex.ru>; Fri, 15 Jul 2016 23:03:12 +0800 (CST)
+X-QQ-SSF: ......

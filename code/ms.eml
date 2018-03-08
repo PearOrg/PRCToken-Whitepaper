@@ -1,0 +1,64 @@
+Received: from SG2PR01MB0751.apcprd01.prod.exchangelabs.com ((*@\color{red}{10.169.52.13}@*)) by
+ KL1PR01MB0743.apcprd01.prod.exchangelabs.com (10.165.16.141) with Microsoft
+ SMTP Server (TLS) id 15.1.409.15 via Mailbox Transport; Wed, 24 Feb 2016
+ 06:18:08 +0000
+Received: from SIXPR01CA0021.apcprd01.prod.exchangelabs.com ((*@\color{red}{10.163.105.149}@*))
+ by SG2PR01MB0751.apcprd01.prod.exchangelabs.com (10.169.52.13) with Microsoft
+ SMTP Server (TLS) id 15.1.409.15; Wed, 24 Feb 2016 06:18:07 +0000
+Received: from AM1FFO11FD032.protection.gbl ((*@\color{red}{2a01:111:f400:7e00::182}@*)) by
+ SIXPR01CA0021.outlook.office365.com (2a01:111:e400:b429::21) with Microsoft
+ SMTP Server (TLS) id 15.1.415.20 via Frontend Transport; Wed, 24 Feb 2016
+ 06:18:06 +0000
+Authentication-Results: spf=softfail (sender IP is 143.89.12.152)
+ smtp.mailfrom=cse.ust.hk; connect.ust.hk; dkim=none (message not signed)
+ header.d=none;connect.ust.hk; dmarc=none action=none
+ header.from=hxcs1g8.supear.cn;
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ cse.ust.hk discourages use of 143.89.12.152 as permitted sender)
+Received: from mx2.ust.hk ((*@\color{red}{143.89.12.152}@*)) by
+ AM1FFO11FD032.mail.protection.outlook.com ((*@\color{red}{10.174.64.221}@*)) with Microsoft SMTP
+ Server (TLS) id 15.1.422.5 via Frontend Transport; Wed, 24 Feb 2016 06:17:59
+ +0000
+Received: from cse.ust.hk (cssvr7.cse.ust.hk [(*@\color{red}{143.89.41.157}@*)])
+	by mx2.ust.hk (8.14.4/8.14.4) with ESMTP id u1O6Hunr007979
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NOT)
+	for <qzhuang@ust.hk>; Wed, 24 Feb 2016 14:17:56 +0800
+Received: from CSMS07.win2k.cs.ust.hk (exchange.cse.ust.hk [(*@\color{red}{143.89.41.19}@*)])
+	by cse.ust.hk (8.14.9/8.12.5) with ESMTP id u1O6HuKD017657
+	(version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qzhuang@ust.hk>; Wed, 24 Feb 2016 14:17:56 +0800
+Received: from cssvr7.cse.ust.hk ((*@\color{red}{143.89.41.157}@*)) by CSMS07.win2k.cs.ust.hk
+ (143.89.41.19) with Microsoft SMTP Server (TLS) id 14.3.248.2; Wed, 24 Feb
+ 2016 14:17:35 +0800
+Received: from cse.ust.hk (bkmail.cs.ust.hk [(*@\color{red}{172.16.41.157}@*)])	by
+ cssvr7.cse.ust.hk (8.14.9/8.12.5) with ESMTP id u1O6HmSO017641	for
+ <qzhuang@cse.ust.hk>; Wed, 24 Feb 2016 14:17:48 +0800
+Received: from hxcs1g8.supear.cn (dy144-193.ust.hk [(*@\color{red}{143.89.144.193}@*)])	by
+ cse.ust.hk (8.14.9/8.13.7) with ESMTP id u1O6Hg13010718	for
+ <qzhuang@cse.ust.hk>; Wed, 24 Feb 2016 14:17:48 +0800
+Authentication-Results: cse.ust.hk from=ust@hxcs1g8.supear.cn; (*@\color{red}{sender-id=pass; spf=pass}@*)
+Received: from hxcs1g8.supear.cn (unknown [119.29.32.138])	by
+ hxcs1g8.supear.cn (Postfix) with ESMTP id 37B181A00EA	for
+ <qzhuang@cse.ust.hk>; Wed, 24 Feb 2016 11:59:20 +0800 (HKT)
+Date: Wed, 24 Feb 2016 11:59:19 +0800
+To: <qzhuang@cse.ust.hk>
+From: <ust@hxcs1g8.supear.cn>
+Subject: RADICA-Pear Fog Email Delivery beta Test
+X-Mailer: Pear Mailer
+X-Env-From: ust@hxcs1g8.supear.cn
+X-Remote-MTA: 143.89.144.193
+MIME-Version: 1.0
+Content-Type: text/plain
+Message-ID: <264ba8af-b65d-489f-8903-385d1a5110ef@CSMS07.win2k.cs.ust.hk>
+Return-Path: SRS0=mY9vzkqg=OX=hxcs1g8.supear.cn=ust@cse.ust.hk
+X-MS-Exchange-Organization-Network-Message-Id: 87c2ab7e-890c-4af2-0613-08d33ce23edf
+X-Forefront-Antispam-Report: CIP:143.89.12.152;CTRY:HK;IPV:NLI;EFV:NLI;SFV:SKN;SFS:;DIR:INB;SFP:;SCL:-1;SRVR:SG2PR01MB0751;H:mx2.ust.hk;FPR:;SPF:None;LANG:en;
+X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:(71701003);SRVR:SG2PR01MB0751;
+X-MS-Exchange-Organization-SCL: -1
+X-Exchange-Antispam-Report-Test: UriScan:;
+X-Exchange-Antispam-Report-CFA-Test: BCL:0;PCL:0;RULEID:(601004)(2401047)(13018025)(13016025)(8121501046)(3002001)(10201501046);SRVR:SG2PR01MB0751;BCL:0;PCL:0;RULEID:;SRVR:SG2PR01MB0751;
+SpamDiagnosticOutput: 1:2
+SpamDiagnosticMetadata: ca2853ad801f4d6bb04606bbac945a33
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Feb 2016 06:17:59.4622
+ (UTC)
+X-MS-Exchange-CrossTenant-Id: ......

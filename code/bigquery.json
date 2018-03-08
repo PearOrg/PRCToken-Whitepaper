@@ -1,0 +1,49 @@
+// GET https://www.googleapis.com/bigquery/v2/projects/projectId/queries/jobId
+{
+  "kind": "bigquery#getQueryResultsResponse",
+  "etag": etag,
+  "schema": {
+    "fields": [
+      {
+        "name": string,
+        "type": string,
+        "mode": string,
+        "fields": [
+          (TableFieldSchema)
+        ],
+        "description": string
+      }
+    ]
+  },
+  "jobReference": {
+    "projectId": string,
+    "jobId": string
+  },
+  "totalRows": unsigned long,
+  "pageToken": string,
+  "rows": [
+    {
+      "f": [
+        {
+          "v": (value),
+          "v": string,
+          "v": [
+            (TableCell)
+          ],
+          "v": (TableRow)
+        }
+      ]
+    }
+  ],
+  "totalBytesProcessed": long,
+  "jobComplete": boolean,
+  "errors": [
+    {
+      "reason": string,
+      "location": string,
+      "debugInfo": string,
+      "message": string
+    }
+  ],
+  "cacheHit": boolean
+}

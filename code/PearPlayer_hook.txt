@@ -1,0 +1,1 @@
+<video id="PearPlayer-hls" width=1280 height=720 class="video-js vjs-default-skin" src="http://cp.com/channel/live.m3u8" controls ></video>
