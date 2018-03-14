@@ -13,12 +13,15 @@ SYNCTEX := 1
 define xelatex
 %$1.pdf : %.tex
 	xelatex -jobname="$$(@:.pdf=)" -synctex=$(SYNCTEX) $$<
+	bibtex $$(@:.pdf=)
+	xelatex -jobname="$$(@:.pdf=)" -synctex=$(SYNCTEX) $$<
 	xelatex -jobname="$$(@:.pdf=)" -synctex=$(SYNCTEX) $$<
 endef
 
 define pdflatex
 %$1.pdf : %.tex
 	pdflatex -jobname="$$(@:.pdf=)" -synctex=$(SYNCTEX) $$<
+	bibtex $$(@:.pdf=)
 	pdflatex -jobname="$$(@:.pdf=)" -synctex=$(SYNCTEX) $$<
 	if grep -q "^[^%].*\\documentclass\s*\[.*GBK" $$< ; then \
 		gbk2uni $$(@:.pdf=.out) ; \
@@ -29,6 +32,7 @@ endef
 define dvipdfmx
 %$1.pdf : %.tex
 	latex -jobname="$$(@:.pdf=)" -synctex=$(SYNCTEX) $$<
+	bibtex $$(@:.pdf=)
 	latex -jobname="$$(@:.pdf=)" -synctex=$(SYNCTEX) $$<
 	if grep -q "^[^%].*\\documentclass\s*\[.*GBK" $$< ; then \
 		if ! kpsewhich -format="cmap files" GBK-EUC-UCS2 ; then \
@@ -42,6 +46,7 @@ endef
 define dvips
 %$1.pdf : %.tex
 	latex -jobname="$$(@:.pdf=)" -synctex=$(SYNCTEX) $$<
+	bibtex $$(@:.pdf=)
 	latex -jobname="$$(@:.pdf=)" -synctex=$(SYNCTEX) $$<
 	if grep -q "^[^%].*\\documentclass\s*\[.*GBK" $$< ; then \
 		gbk2uni $$(@:.pdf=.out) ; \

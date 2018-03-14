@@ -1,4 +1,4 @@
-\chapter{Historical Analysis}\label{sec-his-analysis}
+\chapter{Historical Analysis}\label{chp-his-analysis}
 If you want to predict the future, go look into the past\footnote{In business schools, we usually only learn about things that have happened in the past; here we also analyse what is happening now and what will possibly happen in the near future.}. 
 
 In this chapter, we first seek to go back in time machine to take a retrospective view of the history concerning related fields, from a combination of industrial and academic perspectives. Then, we do some analysis, analysing technologies that emerged, why they became standards and why some were unsuccessful in the end. We also state practical lessons we have learned from this history and how these have inspired our decisions, resolutions and solutions\footnote{We only talk about the technologies that are general-purpose, and have made a difference or will potentially change the world in multiple areas to a great extent. We discuss domain-specific technologies, techniques, applications and phenomena in the respective following chapters.}.
@@ -113,7 +113,7 @@ Apart from the bad reputation due to malware, almost all then popular P2P softwa
 Why the above P2P applications all failed or disappeared eventually? Were they doing self-pleasure? Figure~\ref{fig:p2p-fail-root} is a root-cause-like analysis of the failures of P2P practices. 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=1.00\textwidth]{figure/his-analysis/p2p_fail_analysis.pdf}
+	\includegraphics[width=1.00\textwidth]{fig/his-analysis/p2p_fail_analysis.pdf}
 	\caption{Root-Cause-like Analysis of P2P Failures}\label{fig:p2p-fail-root}
 \end{figure}
 
@@ -191,17 +191,17 @@ During the past century, many power companies have attempted to do distributed g
 	%\begin{figure}[ht] 
 	%		\centering 
 	%		\subfigure { \label{fig:cpu-efficiency} 
-	%			\includegraphics[width=0.48\linewidth]{figure/his-analysis/visc_engergy.png} 
+	%			\includegraphics[width=0.48\linewidth]{fig/his-analysis/visc_engergy.png} 
 	%		} 
 	%		\subfigure { \label{fig:spec-cpu-performance} 
-	%			\includegraphics[width=0.48\linewidth]{figure/his-analysis/visc_single_thread.png} 
+	%			\includegraphics[width=0.48\linewidth]{fig/his-analysis/visc_single_thread.png} 
 	%		}
 	%		\caption{A SPEC CPU 2006 Test in Early 2016.} 
 	%		\label{fig:spec-performance-power} 
 	%\end{figure}
 	\begin{figure}[ht] 
 		\centering 
-		\input{figure/his-analysis/arm_apple_intel}
+		\input{fig/his-analysis/arm_apple_intel}
 		\caption{SPEC2006 Single Thread Score versus Watt (16nm).} 
 		\label{fig:spec-performance-power} 
 	\end{figure}
@@ -210,14 +210,14 @@ During the past century, many power companies have attempted to do distributed g
 	%\begin{figure}[ht] 
 	%		\centering 
 	%		\subfigure[Performance vs. power of ARM CPUs.] { \label{fig:arm-pp-cortex} 
-	%			\input{figure/his-analysis/arm-cortex-cpu}
-	%			%\includegraphics[width=0.46\linewidth]{figure/his-analysis/arm_cortex_a7_a15.jpg} 
+	%			\input{fig/his-analysis/arm-cortex-cpu}
+	%			%\includegraphics[width=0.46\linewidth]{fig/his-analysis/arm_cortex_a7_a15.jpg} 
 	%		} 
 	%		%\subfigure[Performance vs. power of nVIDIA CPUs.] { \label{fig:nvidia-pp-gtx} 
-	%		%	\includegraphics[width=0.50\linewidth]{figure/his-analysis/gtx_gpu.jpg} 
+	%		%	\includegraphics[width=0.50\linewidth]{fig/his-analysis/gtx_gpu.jpg} 
 	%		%}
 	%		\subfigure[Performance vs. power of nVIDIA CPUs.] { \label{fig:nvidia-pp-gtx} 
-	%			\input{figure/his-analysis/gtx-gpu}
+	%			\input{fig/his-analysis/gtx-gpu}
 	%		}
 	%		\caption{Performance vs. power of CPUs and GPUs.} 
 	%		\label{fig:performance-power-cpus-gpus} 
@@ -225,13 +225,13 @@ During the past century, many power companies have attempted to do distributed g
 	\begin{figure}[ht]
 		\begin{minipage}[t]{.50\linewidth}
 			\centering
-			\input{figure/his-analysis/arm-cortex-cpu2}
+			\input{fig/his-analysis/arm-cortex-cpu2}
 			\centerline{\parbox[t]{\linewidth}{\centering\footnotesize (a) Performance vs. power of ARM CPUs.}}
 		\end{minipage}
 		\hfill
 		\begin{minipage}[t]{.50\linewidth}
 			\centering
-			\input{figure/his-analysis/gtx-gpu2}
+			\input{fig/his-analysis/gtx-gpu2}
 			\centerline{\parbox[t]{\linewidth}{\centering\footnotesize (b) Performance vs. power of nVIDIA CPUs.}}
 		\end{minipage}
 		\caption{Performance vs. power of CPUs and GPUs.}
@@ -242,10 +242,10 @@ During the past century, many power companies have attempted to do distributed g
 	\begin{figure}[ht] 
 		\centering 
 		\subfigure[Tech-independent average power normalized to A8.] { \label{fig:tech-independent-avg-power} 
-			\includegraphics[width=0.44\linewidth]{figure/his-analysis/avg-power_to_a8.png} 
+			\includegraphics[width=0.44\linewidth]{fig/his-analysis/avg-power_to_a8.png} 
 		} 
 		\subfigure[Power performance tradeoffs.] { \label{fig:power-performance-tradeoffs} 
-			\includegraphics[width=0.52\columnwidth]{figure/his-analysis/power-performance_tradeoffs.png} 
+			\includegraphics[width=0.52\columnwidth]{fig/his-analysis/power-performance_tradeoffs.png} 
 		}
 		\caption{Power and performance of different CPU architectures.} 
 		\label{fig:power-performance-isa} 
@@ -303,7 +303,7 @@ In fact, from one perspective WebRTC has killed the media engine industry, while
 Figure~\ref{fig:web-evolution} depicts the evolution of the Web in browser working models. 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.75\textwidth]{figure/webrtc/web_evolution.pdf}
+	\includegraphics[width=0.75\textwidth]{fig/webrtc/web_evolution.pdf}
 	\caption{Path to WebRTC: a Web evolution picture.}\label{fig:web-evolution}
 \end{figure}
 
@@ -331,7 +331,7 @@ It is expected that the WebRTC market will reach USD 4.45 billion by 2020, at a 
 Figure~\ref{fig:webrtc-timeline} illustrates the evolution to Pear's WebRTC-based CDN, along with the WebRTC browser support timeline.  
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=1.00\textwidth]{figure/webrtc/webrtc_timeline.pdf}
+	\includegraphics[width=1.00\textwidth]{fig/webrtc/webrtc_timeline.pdf}
 	\caption{WebRTC supporting status and trials timeline.}\label{fig:webrtc-timeline}
 \end{figure}
 

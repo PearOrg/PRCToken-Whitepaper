@@ -1,0 +1,18 @@
+http://www.slideshare.net/alexpiwi5/webrtc-browsers-n-stacks-implementation-differences
+
+QUIC: 
+http://36kr.com/p/532016.html
+
+The components [including the RFC ref. no.]
+https://github.com/thaliproject/thali/wiki/WebRTC-Investigation
+
+QUIC: Design Document and Specification Rationale []
+https://docs.google.com/document/d/1RNHkx_VvKWyWg6Lr8SZ-saqsQx7rFV-ev2jRFUoVD34/edit
+Inspired TLS 1.3’s 0-RTT handshake
+  Plan to adopt TLS 1.3 when complete
+
+
+TLS协议分析 与 现代加密通信协议设计
+http://blog.helong.info/blog/2015/09/06/tls-protocol-analysis-and-crypto-protocol-design/
+
+QUIC provides a dedicated stream (Stream ID 1) to be used for performing the handshake, but the details of this handshake protocol are out of this document's scope. For a complete description of the current handshake protocol, please see the QUIC Crypto Handshake document. QUIC current handshake will be replaced by TLS 1.3 in the future.

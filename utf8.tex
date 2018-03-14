@@ -29,7 +29,9 @@
 
 %\renewcommand{\headrulewidth}{0.5pt}
 \pagestyle{fancy}
-\fancyhead[l]{{\includegraphics[scale=.025]{PearLogo.eps}~}\fancyplain{}{\sl\rightmark}}
+%\lhead{\nouppercase{\rightmark}}
+%\rhead{\nouppercase{\leftmark}}
+\fancyhead[l]{{\includegraphics[scale=.025]{PearLogo.eps}~}\fancyplain{}{\sl\nouppercase\rightmark}}
 %\lhead{\zihao{5}\includegraphics[scale=.025]{PearLogo.eps}~白皮书}
 %\fancyhead[r]{\zihao{5}\fancyplain{}{\sl\leftmark}}
 %%\fancyhead[H]{\zihao{5}}
@@ -75,6 +77,8 @@
 \pagenumbering{arabic}
 
 \input{chp/introduction}
+\input{chp/biz-analysis}
+\input{chp/his-analysis}
 \input{chp/decisions}
 \input{chp/cooperation-cases}
 \input{chp/acknowledgements}

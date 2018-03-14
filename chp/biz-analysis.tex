@@ -5,7 +5,7 @@ In this chapter, we analyse our product, services and the market, and discuss ou
 The current value proposition of Pear is: to catalyse the sharing economy in computing. Pear works on precisely scheduling idle computing resources and bandwidth to match the demand/supply of all relevant parties through the Internet. We are learning from Uber, trying to involve more players to share and achieve multi-wins without destroying the current ecosystem. As there would be a number of services multiplexed on Pear's fog resources pool, it is infeasible to analyse them one-by-one. Here we only take Pear's Fog CDN service as an example. The changes of the industry chain can be illustrated as shown in Figure~\ref{fig:eco-sys-change}.
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=.66\textwidth]{figure/biz/eco-system-change.png}
+	\includegraphics[width=.66\textwidth]{fig/biz/eco-system-change.png}
 	\caption{Ecosystem change before and after Pear comes in.} \label{fig:eco-sys-change}
 \end{figure}
 
@@ -16,7 +16,8 @@ Based on the concept and infrastructure of Fog Computing, Pear has the ambition 
 	\item Fog media coding service;
 	\item Fog CDN for live streaming and VoD (Video on Demand), aka Fog VDN;
 	\item Fog VPN (virtual private network);
-	\item Fog email delivery service;
+	\item Fog Crawler/Spider;
+	\item Fog BaaS (Blockchain as a Service);
 	\item Fog computing for IoT.
 \end{enumerate}
 
@@ -27,7 +28,7 @@ Take Pear's Fog CDN service as an example: CPs currently obtain traditional CDN 
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=.80\textwidth]{figure/biz/revenue_stream.png}
+	\includegraphics[width=.80\textwidth]{fig/biz/revenue_stream.png}
 	\caption{Proposed revenue streams for Pear Fog's VDN service.} \label{fig:vdn-revenue-stream}
 \end{figure}
 
@@ -193,7 +194,7 @@ Pear plans to use common channels, like social media and mass media, for public 
 At the same time, Pear is leveraging media resources of device vendors (agreed), Intel (agreed), Tencent, and JD.com crowd-funding for promoting the fog computing devices and services. There are three main methods Pear is going to use for promotion in B2C model as illustrated in Figure~\ref{fig:promotion-strategy}.  
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=.80\textwidth]{figure/biz/promotion_strategy.png}
+	\includegraphics[width=.80\textwidth]{fig/biz/promotion_strategy.png}
 	\caption{Promotion strategies for Pear's B2C Model.} \label{fig:promotion-strategy}
 \end{figure}
 \begin{enumerate}
@@ -248,7 +249,7 @@ One of the competitors is named Peer5. Established in 2012, Peer5 is a CDN provi
 	The differences between Xunlei's hardware and Pear's hardware are briefly summarised in Figure~\ref{fig:hw-comp-xunlei}.
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.88\textwidth]{figure/biz/hw_comp_xunlei.png}
+		\includegraphics[width=.88\textwidth]{fig/biz/hw_comp_xunlei.png}
 		\caption{Comparison between Xunlei's and Pear's hardware.} \label{fig:hw-comp-xunlei}
 	\end{figure}
 	
@@ -290,13 +291,13 @@ In summary, Table~\ref{tb:features-pearcompetitors}, Figure~\ref{fig:cost-perfor
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=.8\textwidth]{figure/biz/cost-performance-competitors.png}
+	\includegraphics[width=.8\textwidth]{fig/biz/cost-performance-competitors.png}
 	\caption{Cost/Performance view on Pear and its competitors.} \label{fig:cost-performance-competitors}
 \end{figure}
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=.8\textwidth]{figure/biz/all-essences-advantage.png}
+	\includegraphics[width=.8\textwidth]{fig/biz/all-essences-advantage.png}
 	\caption{Illustration of why Pear is ``tasty''.} \label{fig:all-essences-advantage}
 \end{figure}
 
@@ -317,7 +318,7 @@ Pear acknowledges strong competition from these competitors. However, viewed fro
 Before introducing Pear's strategic partners, it is necessary to have a full view of China's “CP+Vendor+CDN” ecosystem in Figure~\ref{fig:cp-vendor-cdn}.
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=.75\textwidth]{figure/biz/cp-vendor-cdn.png}
+	\includegraphics[width=.75\textwidth]{fig/biz/cp-vendor-cdn.png}
 	\caption{Rough view of power distribution in the ``CP+Vendor+CDN'' ecosystem.} \label{fig:cp-vendor-cdn}
 \end{figure}
 
@@ -339,7 +340,7 @@ Pear will not have hardware manufacturing capabilities until January 2017, so Pe
 	NetGear is a US-headquartered global networking company that specialised in producing high-end routers for retail and business markets. NetGear Hong Kong has offered Pear and RADICA four Nighthawk R8000 and one R7000 routers (see Figure~\ref{fig:netgear-r7000-r8000}) for developing and testing the Fog email delivery project. RADICA also proposed to deliver a few thousands of routers in Hong Kong and Taiwan to launch a fog computing platform. 
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.7\textwidth]{figure/biz/netgear-r7000-r8000.png}
+		\includegraphics[width=.7\textwidth]{fig/biz/netgear-r7000-r8000.png}
 		\caption{NetGear Nighthawk R7000 and R8000 Wi-Fi Routers.} \label{fig:netgear-r7000-r8000}
 	\end{figure}
 	\item Huawei Honor\\
@@ -348,14 +349,14 @@ Pear will not have hardware manufacturing capabilities until January 2017, so Pe
 	Headquartered in Taiwan, QNAP is the 2nd largest global NAS vendor. Intrigued by Pear's Sharing Fog Computing concepts, QNAP had a meeting with Pear in Shenzhen in early autumn 2016. QNAP expects to see when Pear schedules the computational resources of 5,000,000+ QNAP devices (see example types in Figure~\ref{fig:qnap-x51}) worldwide and brings value added to the device owners. QNAP is willing to promote Pear's software with its own channels. After that meeting, QNAP offered Pear the latest SDK (called QDK) to make the development easier. A tentative plan is to beta test the software by January 2017 and launch the service by March 2017.
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.7\textwidth]{figure/biz/QNAP_x51.jpg}
+		\includegraphics[width=.7\textwidth]{fig/biz/QNAP_x51.jpg}
 		\caption{QNAP x51 Series.} \label{fig:qnap-x51}
 	\end{figure}
 	\item MeegoPad\\
 	MeeGoPad was the earliest vendors to offer its hardware for Pear's R\&D and testing. In fact, MeeGoPad is the biggest ODM \& OEM for Intel Compute Stick product line in China. They have promised to develop a customised carrier to run Pear's fog services. Pear is preparing the supporting software for the so-called \emph{Pear Stick} or \emph{Pear Sharing Box} at this moment. Beta testing is scheduled for January to March 2016, and Pear hopes to begin marketing it in April 2017 and shipping it to vendors and crowd-funding platforms in May 2017.
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.7\textwidth]{figure/biz/huawei-honor-and-meego-stick.png}
+		\includegraphics[width=.7\textwidth]{fig/biz/huawei-honor-and-meego-stick.png}
 		\caption{Other carriers of Pear Fog: Huawei Honor Router and MeeGopad Compute Stick.} \label{fig:huawei-honor-and-meego-stick}
 	\end{figure}
 \end{itemize}
@@ -373,7 +374,7 @@ Pear and Tan14 have reached a cooperation agreement to build an entirely new clo
 	Besides Tencent Video, Pear also has oral agreements with two other Tencent subsidiaries Qzone's and QQ Video Album's teams plan to schedule the video content delivery through Pear's Fog CDN when it is ready.
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=1.00\textwidth]{figure/biz/tencent-youku-cost-growth.png}
+		\includegraphics[width=1.00\textwidth]{fig/biz/tencent-youku-cost-growth.png}
 		\caption{Some CPs' cost growth rate.} \label{fig:tencent-youku-cost-growth}
 	\end{figure}
 	
@@ -425,7 +426,7 @@ Making financial projections over all possible fog services is impractical at th
 
 \begin{figure}[ht]
 	\centering
-	\input{figure/biz/financial-projections}
+	\input{fig/biz/financial-projections}
 	\caption{Rough financial projections of Pear in 5 years.} \label{fig:financial-projections}
 \end{figure}
 
