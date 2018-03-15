@@ -13,12 +13,13 @@ The value proposition also illustrates the main reason why Pear is called ``Pear
 \section{Services Offered}
 Based on the concept and infrastructure of Fog Computing, Pear has the ambition of running hundreds of services that practise the philosophy of sharing economy. However, Pear is a company which surely needs revenue and profit in order to provide services consistently over time and grow to the next level. Thus, Pear is initially focusing on a few main services: 
 \begin{enumerate}
-	\item Fog media coding service;
-	\item Fog CDN for live streaming and VoD (Video on Demand), aka Fog VDN;
-	\item Fog VPN (virtual private network);
+	\item Fog CDN for Live Streaming and VoD (Video on Demand), aka Fog VDN;
+	\item Fog Media Coding Service;
+	\item Fog Storage Service;
+	\item Fog VPN (Virtual Private Network);
 	\item Fog Crawler/Spider;
 	\item Fog BaaS (Blockchain as a Service);
-	\item Fog computing for IoT.
+	\item Fog Computing for IoT.
 \end{enumerate}
 
 \section{Revenue Streams}
@@ -75,7 +76,7 @@ From a commercial CDN market survey report, we can see that the Total Addressabl
 		\begin{tikzpicture} %[>=latex]
 		\begin{axis}[
 		height=0.75\textwidth,
-		symbolic x coords={2012, 2013, 2014, 2015, 2016},
+		symbolic x coords={2012, 2013, 2014, 2015, 2016, 2017},
 		xtick=data,
 		ymin=0,
 		ylabel=Size (in 100M),
@@ -87,17 +88,19 @@ From a commercial CDN market survey report, we can see that the Total Addressabl
 			(2013, 23.6)
 			(2014, 35.6)
 			(2015, 54.4)
-			(2016, 81.6)
-		};
+			(2016, 81.4)
+			(2017, 140.0)		};
 		\node (n2)[above] at (axis cs:  2012,  16.8) {$16.8$};
 		\node (n3)[above] at (axis cs:  2013,  23.6) {$23.6$};
 		\node (n4)[above] at (axis cs:  2014,  35.6) {$35.6$};
 		\node (n5)[above] at (axis cs:  2015,  54.4) {$54.4$};
-		\node (n6)[above] at (axis cs:  2016,  81.6) {$81.6$};
-		\draw [->] (n2) -- (n3) node [midway, above, sloped] (tn1) {$+36.8\%$};
-		\draw [->] (n3) -- (n4) node [midway, above, sloped] (tn2) {$+40.3\%$};
-		\draw [->] (n4) -- (n5) node [midway, above, sloped] (tn3) {$+51.1\%$};
-		\draw [->] (n5) -- (n6) node [midway, above, sloped] (tn4) {$+53.0\%$};
+		\node (n6)[above] at (axis cs:  2016,  81.4) {$81.4$};
+		\node (n7)[above] at (axis cs:  2017,  140.0) {$140.0$};
+		\draw [->] (n2) -- (n3) node [midway, above, sloped] (tn1) {$+40.5\%$};
+		\draw [->] (n3) -- (n4) node [midway, above, sloped] (tn2) {$+50.8\%$};
+		\draw [->] (n4) -- (n5) node [midway, above, sloped] (tn3) {$+52.8\%$};
+		\draw [->] (n5) -- (n6) node [midway, above, sloped] (tn4) {$+49.6\%$};
+		\draw [->] (n6) -- (n7) node [midway, above, sloped] (tn5) {$+72.0\%$};
 		\end{axis}
 		\end{tikzpicture}
 	\end{center}
